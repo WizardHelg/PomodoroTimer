@@ -5,8 +5,6 @@
     <TargetFramework>net6.0-windows10.0.20348.0</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
-    <SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
-    <SignAssembly>False</SignAssembly>
     <ApplicationIcon>icons8-tomato-64.ico</ApplicationIcon>
   </PropertyGroup>
 
