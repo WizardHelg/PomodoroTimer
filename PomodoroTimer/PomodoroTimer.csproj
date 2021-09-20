@@ -20,4 +20,10 @@
     <Content Include="icons8-tomato-64.ico" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="appsetting.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
