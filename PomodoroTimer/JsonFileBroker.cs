@@ -4,9 +4,17 @@ using System.Text.Json.Serialization;
 
 namespace PomodoroTimer
 {
-    internal record SettingDTO(int WorkPeriod, int SmallRelaxPeriod, int BigRelaxPeriod, int PomodoroAmaunt);
+    /// <summary>
+    /// Посредник между json файлами и объектами
+    /// </summary>
     internal class JsonFileBroker
     {
+        /// <summary>
+        /// Десериализовать объект из файла
+        /// </summary>
+        /// <typeparam name="T">Тип объекта</typeparam>
+        /// <param name="filePath">Путь к файлу</param>
+        /// <returns>Десериализованный объект</returns>
         public static T Load<T>(string filePath) where T : new()
         {
             try
@@ -20,6 +28,12 @@ namespace PomodoroTimer
             }
         }
 
+        /// <summary>
+        /// Сериализовать объект в файл
+        /// </summary>
+        /// <typeparam name="T">Тип объекта</typeparam>
+        /// <param name="obj">Объект для сериализации</param>
+        /// <param name="filePath">Путь к файлу</param>
         public static void Save<T>(T obj, string filePath) where T : new()
         {
             using var fs = new FileStream(filePath,  FileMode.OpenOrCreate);
