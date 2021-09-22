@@ -40,15 +40,15 @@
             this.labelTimer = new System.Windows.Forms.Label();
             this.tabPageSettings = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownAmount = new System.Windows.Forms.NumericUpDown();
             this.groupBoxIntervals = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBoxRelax = new System.Windows.Forms.GroupBox();
-            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownBigRelax = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownSmallRelax = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownWork = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl.SuspendLayout();
             this.tabPageTimer.SuspendLayout();
@@ -56,12 +56,12 @@
             this.panelTimer.SuspendLayout();
             this.tabPageSettings.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAmount)).BeginInit();
             this.groupBoxIntervals.SuspendLayout();
             this.groupBoxRelax.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBigRelax)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSmallRelax)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWork)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl
@@ -192,7 +192,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.numericUpDown1);
+            this.groupBox1.Controls.Add(this.numericUpDownAmount);
             this.groupBox1.Location = new System.Drawing.Point(164, 6);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(171, 56);
@@ -200,18 +200,18 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Колличество помидорок";
             // 
-            // numericUpDown1
+            // numericUpDownAmount
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(6, 22);
-            this.numericUpDown1.Minimum = new decimal(new int[] {
+            this.numericUpDownAmount.Location = new System.Drawing.Point(6, 22);
+            this.numericUpDownAmount.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(159, 23);
-            this.numericUpDown1.TabIndex = 0;
-            this.numericUpDown1.Value = new decimal(new int[] {
+            this.numericUpDownAmount.Name = "numericUpDownAmount";
+            this.numericUpDownAmount.Size = new System.Drawing.Size(159, 23);
+            this.numericUpDownAmount.TabIndex = 0;
+            this.numericUpDownAmount.Value = new decimal(new int[] {
             1,
             0,
             0,
@@ -221,7 +221,7 @@
             // 
             this.groupBoxIntervals.Controls.Add(this.label4);
             this.groupBoxIntervals.Controls.Add(this.groupBoxRelax);
-            this.groupBoxIntervals.Controls.Add(this.numericUpDown2);
+            this.groupBoxIntervals.Controls.Add(this.numericUpDownWork);
             this.groupBoxIntervals.Controls.Add(this.label1);
             this.groupBoxIntervals.Location = new System.Drawing.Point(8, 6);
             this.groupBoxIntervals.Name = "groupBoxIntervals";
@@ -240,9 +240,9 @@
             // 
             // groupBoxRelax
             // 
-            this.groupBoxRelax.Controls.Add(this.numericUpDown4);
+            this.groupBoxRelax.Controls.Add(this.numericUpDownBigRelax);
             this.groupBoxRelax.Controls.Add(this.label3);
-            this.groupBoxRelax.Controls.Add(this.numericUpDown3);
+            this.groupBoxRelax.Controls.Add(this.numericUpDownSmallRelax);
             this.groupBoxRelax.Controls.Add(this.label2);
             this.groupBoxRelax.Location = new System.Drawing.Point(6, 60);
             this.groupBoxRelax.Name = "groupBoxRelax";
@@ -251,23 +251,23 @@
             this.groupBoxRelax.TabStop = false;
             this.groupBoxRelax.Text = "Перерыв";
             // 
-            // numericUpDown4
+            // numericUpDownBigRelax
             // 
-            this.numericUpDown4.Location = new System.Drawing.Point(75, 51);
-            this.numericUpDown4.Maximum = new decimal(new int[] {
+            this.numericUpDownBigRelax.Location = new System.Drawing.Point(75, 51);
+            this.numericUpDownBigRelax.Maximum = new decimal(new int[] {
             60,
             0,
             0,
             0});
-            this.numericUpDown4.Minimum = new decimal(new int[] {
+            this.numericUpDownBigRelax.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numericUpDown4.Name = "numericUpDown4";
-            this.numericUpDown4.Size = new System.Drawing.Size(44, 23);
-            this.numericUpDown4.TabIndex = 5;
-            this.numericUpDown4.Value = new decimal(new int[] {
+            this.numericUpDownBigRelax.Name = "numericUpDownBigRelax";
+            this.numericUpDownBigRelax.Size = new System.Drawing.Size(44, 23);
+            this.numericUpDownBigRelax.TabIndex = 5;
+            this.numericUpDownBigRelax.Value = new decimal(new int[] {
             1,
             0,
             0,
@@ -282,23 +282,23 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Большой";
             // 
-            // numericUpDown3
+            // numericUpDownSmallRelax
             // 
-            this.numericUpDown3.Location = new System.Drawing.Point(75, 22);
-            this.numericUpDown3.Maximum = new decimal(new int[] {
+            this.numericUpDownSmallRelax.Location = new System.Drawing.Point(75, 22);
+            this.numericUpDownSmallRelax.Maximum = new decimal(new int[] {
             60,
             0,
             0,
             0});
-            this.numericUpDown3.Minimum = new decimal(new int[] {
+            this.numericUpDownSmallRelax.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(44, 23);
-            this.numericUpDown3.TabIndex = 3;
-            this.numericUpDown3.Value = new decimal(new int[] {
+            this.numericUpDownSmallRelax.Name = "numericUpDownSmallRelax";
+            this.numericUpDownSmallRelax.Size = new System.Drawing.Size(44, 23);
+            this.numericUpDownSmallRelax.TabIndex = 3;
+            this.numericUpDownSmallRelax.Value = new decimal(new int[] {
             1,
             0,
             0,
@@ -313,23 +313,23 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Малый";
             // 
-            // numericUpDown2
+            // numericUpDownWork
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(81, 22);
-            this.numericUpDown2.Maximum = new decimal(new int[] {
+            this.numericUpDownWork.Location = new System.Drawing.Point(81, 22);
+            this.numericUpDownWork.Maximum = new decimal(new int[] {
             60,
             0,
             0,
             0});
-            this.numericUpDown2.Minimum = new decimal(new int[] {
+            this.numericUpDownWork.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(44, 23);
-            this.numericUpDown2.TabIndex = 1;
-            this.numericUpDown2.Value = new decimal(new int[] {
+            this.numericUpDownWork.Name = "numericUpDownWork";
+            this.numericUpDownWork.Size = new System.Drawing.Size(44, 23);
+            this.numericUpDownWork.TabIndex = 1;
+            this.numericUpDownWork.Value = new decimal(new int[] {
             1,
             0,
             0,
@@ -361,14 +361,14 @@
             this.panelTimer.ResumeLayout(false);
             this.tabPageSettings.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAmount)).EndInit();
             this.groupBoxIntervals.ResumeLayout(false);
             this.groupBoxIntervals.PerformLayout();
             this.groupBoxRelax.ResumeLayout(false);
             this.groupBoxRelax.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBigRelax)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSmallRelax)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWork)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -386,15 +386,15 @@
         private System.Windows.Forms.Button buttonPause;
         private System.Windows.Forms.Button buttonStart;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown numericUpDownAmount;
         private System.Windows.Forms.GroupBox groupBoxIntervals;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBoxRelax;
-        private System.Windows.Forms.NumericUpDown numericUpDown4;
+        private System.Windows.Forms.NumericUpDown numericUpDownBigRelax;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.NumericUpDown numericUpDown3;
+        private System.Windows.Forms.NumericUpDown numericUpDownSmallRelax;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.NumericUpDown numericUpDownWork;
         private System.Windows.Forms.Label label1;
     }
 }

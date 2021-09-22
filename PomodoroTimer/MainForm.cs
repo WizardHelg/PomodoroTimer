@@ -13,6 +13,8 @@ namespace PomodoroTimer
 {
     public partial class MainForm : Form
     {
+        private const string SettingsFilePath = "appsetting.json";
+
         public MainForm()
         {
             InitializeComponent();
