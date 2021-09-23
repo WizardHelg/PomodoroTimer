@@ -14,20 +14,23 @@ namespace PomodoroTimer
     public partial class MainForm : Form
     {
         private const string SettingsFilePath = "appsetting.json";
-
+        private SettingsProvider provider;
         public MainForm()
         {
             InitializeComponent();
-        }
 
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-            
+            Settings settings = JsonFileBroker.Load<Settings>(SettingsFilePath);
+
+            provider = new SettingsProvider(settings)
+                           .AddControl(Settings.Name.WorkPeriod, numericUpDownWork)
+                           .AddControl(Settings.Name.SmallRelaxPeriod, numericUpDownSmallRelax)
+                           .AddControl(Settings.Name.BigRelaxPeriod, numericUpDownBigRelax)
+                           .AddControl(Settings.Name.PomodoroAmaunt, numericUpDownAmount);
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-
+            JsonFileBroker.Save(provider.GetSetting(), SettingsFilePath);
         }
     }
 }

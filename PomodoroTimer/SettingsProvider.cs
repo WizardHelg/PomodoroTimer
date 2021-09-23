@@ -26,7 +26,7 @@ namespace PomodoroTimer
         /// </summary>
         /// <param name="name">Имя настройки</param>
         /// <param name="control">Контрол настройки</param>
-        public void AddControl(Settings.Name name, NumericUpDown control)
+        public SettingsProvider AddControl(Settings.Name name, NumericUpDown control)
         {
             if (controls.ContainsKey(name))
                 controls[name] = control;
@@ -34,6 +34,8 @@ namespace PomodoroTimer
                 controls.Add(name, control);
 
             control.Value = settings[name];
+
+            return this;
         }
 
         /// <summary>
@@ -42,14 +44,12 @@ namespace PomodoroTimer
         /// <returns>Файл настроек</returns>
         public Settings GetSetting()
         {
-            Settings settings1 = new Settings();
+            Settings returnValue = new Settings();
 
             foreach(var item in controls)
-            {
-                settings[item.Key] = (int)item.Value.Value;
-            }
+                returnValue[item.Key] = (int)item.Value.Value;
 
-            return settings1;
+            return returnValue;
         }
 
         public int this[Settings.Name name]
