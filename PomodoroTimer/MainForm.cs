@@ -31,12 +31,14 @@ namespace PomodoroTimer
 
             model = new Model.Model(provider);
 
-            Binder.Build(model)
-                .AddBinding(Binder.Name.Start, buttonStart)
-                .AddBinding(Binder.Name.Pause, buttonPause)
-                .AddBinding(Binder.Name.Skip, buttonSkip)
-                .AddBinding(Binder.Name.Reset, buttonReset);
+            ControlBinder.Build(model)
+                .AddBinding(ControlBinder.Name.Start, buttonStart)
+                .AddBinding(ControlBinder.Name.Pause, buttonPause)
+                .AddBinding(ControlBinder.Name.Skip, buttonSkip)
+                .AddBinding(ControlBinder.Name.Reset, buttonReset);
 
+            ViewBinder.Build(model)
+                .AddBinding(ViewBinder.Name.Timer, labelTimer);
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)

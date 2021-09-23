@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PomodoroTimer
 {
-    internal class Binder
+    internal class ControlBinder
     {
         private readonly Model.IModelController model;
 
@@ -19,14 +15,14 @@ namespace PomodoroTimer
             Reset
         }
 
-        public static Binder Build(Model.IModelController model) => new Binder(model);
+        public static ControlBinder Build(Model.IModelController model) => new ControlBinder(model);
 
-        private Binder(Model.IModelController model)
+        private ControlBinder(Model.IModelController model)
         {
             this.model = model;
         }
 
-        public Binder AddBinding(Name name, Control control)
+        public ControlBinder AddBinding(Name name, Control control)
         {
             Action action = name switch
             {

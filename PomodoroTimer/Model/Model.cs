@@ -10,18 +10,19 @@ namespace PomodoroTimer.Model
     {
         SettingsProvider settingsProvider;
 
+        public event Action<DateTime>? ChangeTime;
+        public event Action<bool>? ChangeTimerState;
+        public event Action<int>? ChangePomodoroCounter;
+
         public Model(SettingsProvider settingsProvider)
         {
             this.settingsProvider = settingsProvider;
         }
 
+        
+
+
         //interface implementation remove to partial class
-        bool IModelView.TimerEnable => throw new NotImplementedException();
-
-        DateTime IModelView.Time => throw new NotImplementedException();
-
-        int IModelView.PomodoroCounter => throw new NotImplementedException();
-
         void IModelController.Pause()
         {
             throw new NotImplementedException();
