@@ -8,7 +8,7 @@ namespace PomodoroTimer.Model
 {
     internal interface IModelView
     {
-        event Action<DateTime>? ChangeTime;
+        event Action<TimeSpan>? ChangeTime;
         event Action<bool>? ChangeTimerState;
         event Action<int>? ChangePomodoroCounter;
     }

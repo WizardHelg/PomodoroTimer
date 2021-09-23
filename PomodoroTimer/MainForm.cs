@@ -39,6 +39,8 @@ namespace PomodoroTimer
 
             ViewBinder.Build(model)
                 .AddBinding(ViewBinder.Name.Timer, labelTimer);
+
+            model.Run();
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)

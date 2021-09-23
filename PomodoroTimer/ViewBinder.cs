@@ -34,10 +34,10 @@ namespace PomodoroTimer
             return this;
         }
 
-        private void Model_ChangeTime(DateTime time)
+        private void Model_ChangeTime(TimeSpan time)
         {
             if (controls.TryGetValue(Name.Timer, out var control))
-                control.Text = $"{time:MM:ss}";
+                control.Text = @$"{time:mm\:ss}";
         }
 
         private void Model_ChangeTimerState(bool state)
