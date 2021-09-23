@@ -14,7 +14,9 @@ namespace PomodoroTimer
     public partial class MainForm : Form
     {
         private const string SettingsFilePath = "appsetting.json";
-        private SettingsProvider provider;
+        private readonly SettingsProvider provider;
+        //private readonly Binder binder; //В статику его
+        private Model.Model model;
         public MainForm()
         {
             InitializeComponent();
@@ -26,6 +28,15 @@ namespace PomodoroTimer
                            .AddControl(Settings.Name.SmallRelaxPeriod, numericUpDownSmallRelax)
                            .AddControl(Settings.Name.BigRelaxPeriod, numericUpDownBigRelax)
                            .AddControl(Settings.Name.PomodoroAmaunt, numericUpDownAmount);
+
+            model = new Model.Model(provider);
+
+            Binder.Build(model)
+                .AddBinding(Binder.Name.Start, buttonStart)
+                .AddBinding(Binder.Name.Pause, buttonPause)
+                .AddBinding(Binder.Name.Skip, buttonSkip)
+                .AddBinding(Binder.Name.Reset, buttonReset);
+
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)

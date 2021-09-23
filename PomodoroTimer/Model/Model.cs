@@ -6,16 +6,38 @@ using System.Threading.Tasks;
 
 namespace PomodoroTimer.Model
 {
-    internal class Model : IModelTimerState
+    internal class Model : IModelController, IModelView
     {
-        public bool TimerEnable { get; set; }
+        SettingsProvider settingsProvider;
 
-        public void Reset()
+        public Model(SettingsProvider settingsProvider)
+        {
+            this.settingsProvider = settingsProvider;
+        }
+
+        //interface implementation remove to partial class
+        bool IModelView.TimerEnable => throw new NotImplementedException();
+
+        DateTime IModelView.Time => throw new NotImplementedException();
+
+        int IModelView.PomodoroCounter => throw new NotImplementedException();
+
+        void IModelController.Pause()
         {
             throw new NotImplementedException();
         }
 
-        public void Skip()
+        void IModelController.Reset()
+        {
+            throw new NotImplementedException();
+        }
+
+        void IModelController.Skip()
+        {
+            throw new NotImplementedException();
+        }
+
+        void IModelController.Start()
         {
             throw new NotImplementedException();
         }

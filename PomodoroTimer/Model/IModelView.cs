@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace PomodoroTimer.Model
 {
-    internal interface IModelTimerState
+    internal interface IModelView
     {
-        bool TimerEnable { get; set; }
-        void Skip();
-        void Reset();
+        bool TimerEnable { get; }
+        DateTime Time { get; }
+        int PomodoroCounter { get; }
     }
 }

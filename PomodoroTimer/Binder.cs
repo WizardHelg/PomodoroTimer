@@ -7,10 +7,9 @@ using System.Windows.Forms;
 
 namespace PomodoroTimer
 {
-    internal class Controller
+    internal class Binder
     {
-        private readonly Dictionary<Name, Action> controls = new();
-        private readonly Model.IModelTimerState model;
+        private readonly Model.IModelController model;
 
         public enum Name
         {
@@ -20,28 +19,25 @@ namespace PomodoroTimer
             Reset
         }
 
-        public event Action? Start, Pause, Skip, Reset;
+        public static Binder Build(Model.IModelController model) => new Binder(model);
 
-        public Controller(Model.IModelTimerState model)
+        private Binder(Model.IModelController model)
         {
             this.model = model;
         }
 
-        public Controller AddControl(Name name, Control control)
+        public Binder AddBinding(Name name, Control control)
         {
             Action action = name switch
             {
-                Name.Start => () => model.TimerEnable = true,
-                Name.Pause => () => model.TimerEnable = false,
+                Name.Start => () => model.Start(),
+                Name.Pause => () => model.Pause(),
                 Name.Skip => () => model.Skip(),
                 Name.Reset => () => model.Reset(),
                 _ => () => { }
             };
 
-            if (controls.ContainsKey(name))
-                controls[name] = action;
-            else
-                controls.Add(name, action);
+            control.Click += (sender, e) => action();
 
             return this;
         }
