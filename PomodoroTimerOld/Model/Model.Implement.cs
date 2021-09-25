@@ -23,10 +23,12 @@ namespace PomodoroTimer.Model
         {
             //остановка таймера
             timer.Stop();
-            ChangeTimerState?.Invoke(timer.Enabled);
-
+            
             //инициализация очереди
             InitQueue();
+            currentStep = steps.Dequeue();
+
+            ChangeTimerState?.Invoke(timer.Enabled);
             ChangePomodoroCounter?.Invoke(currentStep.Number);
             ChangeTime?.Invoke(currentStep);
         }
@@ -35,13 +37,15 @@ namespace PomodoroTimer.Model
         {
             //Остановка таймера
             timer.Stop();
-            ChangeTimerState?.Invoke(timer.Enabled);
+            
 
             //Установка следующего шага
             if (steps.Count == 0)
                 InitQueue();
 
             currentStep = steps.Dequeue();
+
+            ChangeTimerState?.Invoke(timer.Enabled);
             ChangePomodoroCounter?.Invoke(currentStep.Number);
             ChangeTime?.Invoke(currentStep);
         }

@@ -11,7 +11,14 @@ namespace PomodoroTimer.Model
     {
         class Step
         {
-            private bool isNew = true;
+            public enum StepType
+            {
+                Work,
+                Relax
+            }
+
+            public StepType Type { get; init; }
+
             public int Number { get; init; }
             public int Seconds { get; set; }
 
@@ -54,14 +61,45 @@ namespace PomodoroTimer.Model
             }
             else
             {
+                bool startNext = false;
                 timer.Stop();
                 ChangeTimerState?.Invoke(timer.Enabled);
+
+                switch (currentStep.Type)
+                {
+                    case Step.StepType.Relax:
+                        if(MessageBox.Show(
+                            "Отдых окончен, пора поработать!\nЗапустить работу?",
+                            "PomodoroTimer",
+                            MessageBoxButtons.YesNo,
+                            MessageBoxIcon.Information) == DialogResult.Yes)
+                        {
+                            startNext = true;
+                        }
+                        break;
+                    case Step.StepType.Work:
+                        if(MessageBox.Show(
+                            "Хватит работать, пора отдыхать!\nЗапустить отдых?",
+                            "PomodoroTimer",
+                            MessageBoxButtons.YesNo,
+                            MessageBoxIcon.Information) == DialogResult.Yes)
+                        {
+                            startNext = true;
+                        }
+                        break;
+                }
 
                 if (steps.Count == 0)
                     InitQueue();
 
                 currentStep = steps.Dequeue();
                 ChangePomodoroCounter?.Invoke(currentStep.Number);
+
+                if (startNext)
+                {
+                    timer.Stop();
+                    ChangeTimerState?.Invoke(timer.Enabled);
+                }
             }
 
             ChangeTime?.Invoke(currentStep);
@@ -85,6 +123,7 @@ namespace PomodoroTimer.Model
                 steps.Enqueue(new Step()
                 {
                     Number = i + 1,
+                    Type = isWork ? Step.StepType.Work : Step.StepType.Relax,
                     Seconds = isWork ? work
                                      : isBigRelax ? bigRelax : smallRelax
                 });
