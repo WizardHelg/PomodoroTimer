@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Text.Json;
+﻿using System.Windows.Forms;
 
 namespace PomodoroTimer
 {
@@ -15,15 +6,15 @@ namespace PomodoroTimer
     {
         private const string SettingsFilePath = "appsetting.json";
         private readonly SettingsProvider provider;
-        //private readonly Binder binder; //В статику его
-        private Model.Model model;
+        private readonly Model.Model model;
+
         public MainForm()
         {
             InitializeComponent();
 
             Settings settings = JsonFileBroker.Load<Settings>(SettingsFilePath);
 
-            provider = new SettingsProvider(settings)
+            provider = SettingsProvider.Build(settings)
                            .AddControl(Settings.Name.WorkPeriod, numericUpDownWork)
                            .AddControl(Settings.Name.SmallRelaxPeriod, numericUpDownSmallRelax)
                            .AddControl(Settings.Name.BigRelaxPeriod, numericUpDownBigRelax)

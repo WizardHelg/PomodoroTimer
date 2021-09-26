@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
 namespace PomodoroTimer
@@ -17,7 +16,7 @@ namespace PomodoroTimer
             PomodoroAmaunt
         }
 
-        Dictionary<Name, int> data = new()
+        private readonly Dictionary<Name, int> data = new()
         {
             [Name.WorkPeriod] = 25,
             [Name.SmallRelaxPeriod] = 5,

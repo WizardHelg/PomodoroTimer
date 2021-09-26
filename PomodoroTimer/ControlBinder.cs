@@ -5,8 +5,6 @@ namespace PomodoroTimer
 {
     internal class ControlBinder
     {
-        private readonly Model.IModelController model;
-
         public enum Name
         {
             Start,
@@ -15,12 +13,11 @@ namespace PomodoroTimer
             Reset
         }
 
-        public static ControlBinder Build(Model.IModelController model) => new ControlBinder(model);
+        private readonly Model.IModelController model;
 
-        private ControlBinder(Model.IModelController model)
-        {
-            this.model = model;
-        }
+        public static ControlBinder Build(Model.IModelController model) => new(model);
+
+        private ControlBinder(Model.IModelController model) => this.model = model;
 
         public ControlBinder AddBinding(Name name, Control control)
         {

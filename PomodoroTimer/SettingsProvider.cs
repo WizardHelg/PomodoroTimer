@@ -8,15 +8,13 @@ namespace PomodoroTimer
     /// </summary>
     internal class SettingsProvider
     {
-        private Settings settings;
-
+        private readonly Settings settings;
         private readonly Dictionary<Settings.Name, NumericUpDown> controls = new();
 
-        public SettingsProvider(Settings settings)
-        {
-            this.settings = settings;
-        }
-        
+        public static SettingsProvider Build(Settings settings) => new(settings);
+
+        private SettingsProvider(Settings settings) => this.settings = settings;
+
         /// <summary>
         /// Добавить контрол настроек
         /// </summary>
@@ -40,7 +38,7 @@ namespace PomodoroTimer
         /// <returns>Файл настроек</returns>
         public Settings GetSetting()
         {
-            Settings returnValue = new Settings();
+            var returnValue = new Settings();
 
             foreach(var item in controls)
                 returnValue[item.Key] = (int)item.Value.Value;

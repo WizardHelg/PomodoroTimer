@@ -1,6 +1,6 @@
-﻿using System.Text.Json;
-using System.IO;
-using System.Text.Json.Serialization;
+﻿using System.IO;
+using System.Text;
+using System.Text.Json;
 
 namespace PomodoroTimer
 {
@@ -20,7 +20,10 @@ namespace PomodoroTimer
             try
             {
                 using var fs = new FileStream(filePath, FileMode.OpenOrCreate);
-                return JsonSerializer.Deserialize<T>(fs) ?? new T();
+                byte[] buffer = new byte[fs.Length];
+                fs.Read(buffer, 0, buffer.Length);
+                string json = Encoding.UTF8.GetString(buffer);
+                return JsonSerializer.Deserialize<T>(json) ?? new T();
             }
             catch
             {
@@ -37,10 +40,15 @@ namespace PomodoroTimer
         public static void Save<T>(T obj, string filePath) where T : new()
         {
             using var fs = new FileStream(filePath,  FileMode.OpenOrCreate);
-            JsonSerializer.Serialize(fs, obj, new JsonSerializerOptions()
+            
+            string json = JsonSerializer.Serialize(obj, new JsonSerializerOptions()
             {
                 WriteIndented = true
             });
+
+            byte[] buffer = Encoding.UTF8.GetBytes(json);
+            fs.Write(buffer, 0, buffer.Length);
+            
         }
     }
 }

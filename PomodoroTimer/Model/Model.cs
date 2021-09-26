@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PomodoroTimer.Model
 {
@@ -46,12 +43,7 @@ namespace PomodoroTimer.Model
             currentStep = steps.Dequeue();
         }
 
-        public void Run()
-        {
-            ChangeTime?.Invoke(currentStep);
-            ChangeTimerState?.Invoke(timer.Enabled);
-            ChangePomodoroCounter?.Invoke(currentStep.Number);
-        }
+        public void Run() => ChangeTime?.Invoke(currentStep);
 
         private void Timer_Tick(object? sender, EventArgs e)
         {
@@ -63,7 +55,6 @@ namespace PomodoroTimer.Model
             {
                 bool startNext = false;
                 timer.Stop();
-                ChangeTimerState?.Invoke(timer.Enabled);
 
                 switch (currentStep.Type)
                 {
@@ -77,6 +68,7 @@ namespace PomodoroTimer.Model
                             startNext = true;
                         }
                         break;
+
                     case Step.StepType.Work:
                         if(MessageBox.Show(
                             "Хватит работать, пора отдыхать!\nЗапустить отдых?",
@@ -93,12 +85,10 @@ namespace PomodoroTimer.Model
                     InitQueue();
 
                 currentStep = steps.Dequeue();
-                ChangePomodoroCounter?.Invoke(currentStep.Number);
 
                 if (startNext)
                 {
-                    timer.Stop();
-                    ChangeTimerState?.Invoke(timer.Enabled);
+                    timer.Start();
                 }
             }
 
