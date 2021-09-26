@@ -1,0 +1,6 @@
+{
+  "workPeriod": 25,
+  "smallRelaxPeriod": 5,
+  "bigRelaxPeriod": 15,
+  "pomodoroAmount": 4
+}
