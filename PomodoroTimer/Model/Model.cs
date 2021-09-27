@@ -99,7 +99,7 @@ namespace PomodoroTimer.Model
         {
             bool isWork = true;
 
-            int amaunt = settingsProvider[Settings.Name.PomodoroAmaunt];
+            int amaunt = settingsProvider[Settings.Name.PomodoroAmaunt] * 2;
             int work = settingsProvider[Settings.Name.WorkPeriod] * 60;
             int smallRelax = settingsProvider[Settings.Name.SmallRelaxPeriod] * 60;
             int bigRelax = settingsProvider[Settings.Name.BigRelaxPeriod] * 60;
@@ -108,7 +108,7 @@ namespace PomodoroTimer.Model
 
             for (int i = 0; i < amaunt; i++)
             {
-                bool isBigRelax = amaunt - i == 2;
+                bool isBigRelax = i == amaunt - 1;
 
                 steps.Enqueue(new Step()
                 {
