@@ -50,6 +50,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.numericUpDownWork = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
+            this.labelPomodoroNumber = new System.Windows.Forms.Label();
             this.tabControl.SuspendLayout();
             this.tabPageTimer.SuspendLayout();
             this.panelButtons.SuspendLayout();
@@ -344,11 +345,21 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Работа";
             // 
+            // labelPomodoroNumber
+            // 
+            this.labelPomodoroNumber.AutoSize = true;
+            this.labelPomodoroNumber.Location = new System.Drawing.Point(130, 5);
+            this.labelPomodoroNumber.Name = "labelPomodoroNumber";
+            this.labelPomodoroNumber.Size = new System.Drawing.Size(123, 15);
+            this.labelPomodoroNumber.TabIndex = 1;
+            this.labelPomodoroNumber.Text = "Номер помидорки: 1";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.labelPomodoroNumber);
             this.Controls.Add(this.tabControl);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
@@ -369,6 +380,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSmallRelax)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWork)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -395,6 +407,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.NumericUpDown numericUpDownWork;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelPomodoroNumber;
     }
 }
 
