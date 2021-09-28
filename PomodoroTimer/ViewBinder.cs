@@ -25,7 +25,7 @@ namespace PomodoroTimer
         private void Model_ChangePomodoroNumber(int number)
         {
             if (controls.TryGetValue(Name.Number, out var control))
-                control.Text = $"Номер поимдоки: {number}";
+                control.Text = $"Номер помидорки: {number}";
         }
 
         private void Model_ChangeTime(TimeSpan time)
