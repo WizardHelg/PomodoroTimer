@@ -6,8 +6,8 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ApplicationIcon>icons8-tomato-64.ico</ApplicationIcon>
-	<AssemblyVersion>1.1.0</AssemblyVersion>
-	<FileVersion>1.1.0.0</FileVersion>
+	<AssemblyVersion>1.2.0</AssemblyVersion>
+	<FileVersion>1.2.0.0</FileVersion>
 	<Copyright>Oleg WizardHelg Moiseev</Copyright>
   </PropertyGroup>
 
