@@ -49,7 +49,7 @@ namespace PomodoroTimer
         private void NotifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             WindowState = windowState;
-            ShowIcon = true;
+            ShowInTaskbar = true;
         }
 
         private void MainForm_Resize(object sender, System.EventArgs e)
