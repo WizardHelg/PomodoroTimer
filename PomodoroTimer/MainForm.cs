@@ -8,6 +8,8 @@ namespace PomodoroTimer
         private readonly SettingsProvider provider;
         private readonly Model.Model model;
 
+        private FormWindowState windowState = FormWindowState.Normal;
+
         public MainForm()
         {
             InitializeComponent();
@@ -24,9 +26,13 @@ namespace PomodoroTimer
 
             ControlBinder.Build(model)
                 .AddBinding(ControlBinder.Name.Start, buttonStart)
+                .AddBinding(ControlBinder.Name.Start, tsmiStart)
                 .AddBinding(ControlBinder.Name.Pause, buttonPause)
+                .AddBinding(ControlBinder.Name.Pause, tsmiPause)
                 .AddBinding(ControlBinder.Name.Skip, buttonSkip)
-                .AddBinding(ControlBinder.Name.Reset, buttonReset);
+                .AddBinding(ControlBinder.Name.Skip, tsmiSkip)
+                .AddBinding(ControlBinder.Name.Reset, buttonReset)
+                .AddBinding(ControlBinder.Name.Reset, tsmiReset);
 
             ViewBinder.Build(model)
                 .AddBinding(ViewBinder.Name.Timer, labelTimer)
@@ -38,6 +44,20 @@ namespace PomodoroTimer
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             JsonFileBroker.Save(provider.GetSetting(), SettingsFilePath);
+        }
+
+        private void NotifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            WindowState = windowState;
+            ShowIcon = true;
+        }
+
+        private void MainForm_Resize(object sender, System.EventArgs e)
+        {
+            if(this.WindowState == FormWindowState.Minimized)
+                ShowInTaskbar = false;
+            else
+                windowState = WindowState;
         }
     }
 }

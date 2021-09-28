@@ -34,5 +34,21 @@ namespace PomodoroTimer
 
             return this;
         }
+
+        public ControlBinder AddBinding(Name name, ToolStripMenuItem control)
+        {
+            Action action = name switch
+            {
+                Name.Start => () => model.Start(),
+                Name.Pause => () => model.Pause(),
+                Name.Skip => () => model.Skip(),
+                Name.Reset => () => model.Reset(),
+                _ => () => { }
+            };
+
+            control.Click += (sender, e) => action();
+
+            return this;
+        }
     }
 }

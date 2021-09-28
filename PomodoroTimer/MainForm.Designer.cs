@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPageTimer = new System.Windows.Forms.TabPage();
@@ -51,6 +52,12 @@
             this.numericUpDownWork = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.labelPomodoroNumber = new System.Windows.Forms.Label();
+            this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsmiStart = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiPause = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiSkip = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiReset = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl.SuspendLayout();
             this.tabPageTimer.SuspendLayout();
             this.panelButtons.SuspendLayout();
@@ -63,6 +70,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBigRelax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSmallRelax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWork)).BeginInit();
+            this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl
@@ -354,6 +362,52 @@
             this.labelPomodoroNumber.TabIndex = 1;
             this.labelPomodoroNumber.Text = "Номер помидорки: 1";
             // 
+            // notifyIcon
+            // 
+            this.notifyIcon.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.notifyIcon.BalloonTipText = "Текст";
+            this.notifyIcon.BalloonTipTitle = "Заголовок";
+            this.notifyIcon.ContextMenuStrip = this.contextMenuStrip;
+            this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
+            this.notifyIcon.Text = "Pomodoro Timer";
+            this.notifyIcon.Visible = true;
+            this.notifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.NotifyIcon_MouseDoubleClick);
+            // 
+            // contextMenuStrip
+            // 
+            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiStart,
+            this.tsmiPause,
+            this.tsmiSkip,
+            this.tsmiReset});
+            this.contextMenuStrip.Name = "contextMenuStrip1";
+            this.contextMenuStrip.Size = new System.Drawing.Size(140, 92);
+            this.contextMenuStrip.Text = "Pomodoro Timer";
+            // 
+            // tsmiStart
+            // 
+            this.tsmiStart.Name = "tsmiStart";
+            this.tsmiStart.Size = new System.Drawing.Size(139, 22);
+            this.tsmiStart.Text = "Старт";
+            // 
+            // tsmiPause
+            // 
+            this.tsmiPause.Name = "tsmiPause";
+            this.tsmiPause.Size = new System.Drawing.Size(139, 22);
+            this.tsmiPause.Text = "Пауза";
+            // 
+            // tsmiSkip
+            // 
+            this.tsmiSkip.Name = "tsmiSkip";
+            this.tsmiSkip.Size = new System.Drawing.Size(139, 22);
+            this.tsmiSkip.Text = "Пропустить";
+            // 
+            // tsmiReset
+            // 
+            this.tsmiReset.Name = "tsmiReset";
+            this.tsmiReset.Size = new System.Drawing.Size(139, 22);
+            this.tsmiReset.Text = "Сброс";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -365,6 +419,7 @@
             this.Name = "MainForm";
             this.Text = "PomodoroTimer";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
+            this.Resize += new System.EventHandler(this.MainForm_Resize);
             this.tabControl.ResumeLayout(false);
             this.tabPageTimer.ResumeLayout(false);
             this.panelButtons.ResumeLayout(false);
@@ -379,6 +434,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBigRelax)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSmallRelax)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWork)).EndInit();
+            this.contextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -408,6 +464,12 @@
         private System.Windows.Forms.NumericUpDown numericUpDownWork;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label labelPomodoroNumber;
+        private System.Windows.Forms.NotifyIcon notifyIcon;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem tsmiStart;
+        private System.Windows.Forms.ToolStripMenuItem tsmiPause;
+        private System.Windows.Forms.ToolStripMenuItem tsmiSkip;
+        private System.Windows.Forms.ToolStripMenuItem tsmiReset;
     }
 }
 
