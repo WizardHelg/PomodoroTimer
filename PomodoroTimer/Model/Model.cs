@@ -43,7 +43,12 @@ namespace PomodoroTimer.Model
             currentStep = steps.Dequeue();
         }
 
-        public void Run() => ChangeTime?.Invoke(currentStep);
+        public void Run()
+        {
+            ChangeTime?.Invoke(currentStep);
+            ChangePomodoroNumber?.Invoke(currentStep.Number);
+
+        }
 
         private void Timer_Tick(object? sender, EventArgs e)
         {
@@ -93,6 +98,7 @@ namespace PomodoroTimer.Model
             }
 
             ChangeTime?.Invoke(currentStep);
+            ChangePomodoroNumber?.Invoke(currentStep.Number);
         }
 
         private void InitQueue()
@@ -106,13 +112,16 @@ namespace PomodoroTimer.Model
 
             steps.Clear();
 
+            int stepNumber = 0;
             for (int i = 0; i < amaunt; i++)
             {
                 bool isBigRelax = i == amaunt - 1;
+                if (isWork)
+                    stepNumber++;
 
                 steps.Enqueue(new Step()
                 {
-                    Number = i + 1,
+                    Number = stepNumber,
                     Type = isWork ? Step.StepType.Work : Step.StepType.Relax,
                     Seconds = isWork ? work
                                      : isBigRelax ? bigRelax : smallRelax
@@ -120,6 +129,7 @@ namespace PomodoroTimer.Model
 
                 isWork = !isWork;
             }
+        
         }
         
     }

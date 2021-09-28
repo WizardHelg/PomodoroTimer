@@ -29,7 +29,8 @@ namespace PomodoroTimer
                 .AddBinding(ControlBinder.Name.Reset, buttonReset);
 
             ViewBinder.Build(model)
-                .AddBinding(ViewBinder.Name.Timer, labelTimer);
+                .AddBinding(ViewBinder.Name.Timer, labelTimer)
+                .AddBinding(ViewBinder.Name.Number, labelPomodoroNumber);
 
             model.Run();
         }

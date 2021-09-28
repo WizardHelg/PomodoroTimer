@@ -5,6 +5,7 @@ namespace PomodoroTimer.Model
     internal partial class Model
     {
         public event Action<TimeSpan>? ChangeTime;
+        public event Action<int>? ChangePomodoroNumber;
 
         public void Start() => timer.Start();
 
@@ -20,6 +21,7 @@ namespace PomodoroTimer.Model
             currentStep = steps.Dequeue();
 
             ChangeTime?.Invoke(currentStep);
+            ChangePomodoroNumber?.Invoke(currentStep.Number);
         }
 
         public void Reset()
@@ -30,6 +32,7 @@ namespace PomodoroTimer.Model
             currentStep = steps.Dequeue();
 
             ChangeTime?.Invoke(currentStep);
+            ChangePomodoroNumber?.Invoke(currentStep.Number);
         }
     }
 }
