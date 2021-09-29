@@ -68,7 +68,9 @@ namespace PomodoroTimer.Model
                             "Отдых окончен, пора поработать!\nЗапустить работу?",
                             "PomodoroTimer",
                             MessageBoxButtons.YesNo,
-                            MessageBoxIcon.Information) == DialogResult.Yes)
+                            MessageBoxIcon.Information,
+                            MessageBoxDefaultButton.Button1,
+                            MessageBoxOptions.ServiceNotification) == DialogResult.Yes)
                         {
                             startNext = true;
                         }
@@ -79,7 +81,9 @@ namespace PomodoroTimer.Model
                             "Хватит работать, пора отдыхать!\nЗапустить отдых?",
                             "PomodoroTimer",
                             MessageBoxButtons.YesNo,
-                            MessageBoxIcon.Information) == DialogResult.Yes)
+                            MessageBoxIcon.Information,
+                            MessageBoxDefaultButton.Button1,
+                            MessageBoxOptions.ServiceNotification) == DialogResult.Yes)
                         {
                             startNext = true;
                         }
