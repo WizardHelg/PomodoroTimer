@@ -22,7 +22,8 @@ namespace PomodoroTimer
 
         public ControlBinder AddBinding(Name name, Control control)
         {
-            control.Click += (sender, e) => GetAction(name);
+            Action action = GetAction(name);
+            control.Click += (sender, e) => action();
 
             return this;
         }
