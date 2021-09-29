@@ -22,36 +22,26 @@ namespace PomodoroTimer
 
         public ControlBinder AddBinding(Name name, Control control)
         {
-            Action action = name switch
-            {
-                Name.Start => () => model.Start(),
-                Name.Pause => () => model.Pause(),
-                Name.Skip => () => model.Skip(),
-                Name.Reset => () => model.Reset(),
-                Name.Exit => () => model.Exit(),
-                _ => () => { }
-            };
-
-            control.Click += (sender, e) => action();
+            control.Click += (sender, e) => GetAction(name);
 
             return this;
         }
 
         public ControlBinder AddBinding(Name name, ToolStripMenuItem control)
         {
-            Action action = name switch
-            {
-                Name.Start => () => model.Start(),
-                Name.Pause => () => model.Pause(),
-                Name.Skip => () => model.Skip(),
-                Name.Reset => () => model.Reset(),
-                Name.Exit => () => model.Exit(),
-                _ => () => { }
-            };
-
-            control.Click += (sender, e) => action();
+            control.Click += (sender, e) => GetAction(name);
 
             return this;
         }
+
+        private Action GetAction(Name name) => name switch
+        {
+            Name.Start => () => model.Start(),
+            Name.Pause => () => model.Pause(),
+            Name.Skip => () => model.Skip(),
+            Name.Reset => () => model.Reset(),
+            Name.Exit => () => model.Exit(),
+            _ => () => { }
+        };
     }
 }
