@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Forms;
 
 namespace PomodoroTimer.Model
 {
@@ -33,6 +34,11 @@ namespace PomodoroTimer.Model
 
             ChangeTime?.Invoke(currentStep);
             ChangePomodoroNumber?.Invoke(currentStep.Number);
+        }
+
+        public void Exit()
+        {
+            Application.Exit();
         }
     }
 }

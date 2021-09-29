@@ -6,5 +6,6 @@
         void Pause();
         void Skip();
         void Reset();
+        void Exit();
     }
 }

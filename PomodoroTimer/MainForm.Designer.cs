@@ -58,6 +58,8 @@
             this.tsmiPause = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiSkip = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiReset = new System.Windows.Forms.ToolStripMenuItem();
+            this.buttonExit = new System.Windows.Forms.Button();
+            this.tsmiExit = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl.SuspendLayout();
             this.tabPageTimer.SuspendLayout();
             this.panelButtons.SuspendLayout();
@@ -98,6 +100,7 @@
             // 
             // panelButtons
             // 
+            this.panelButtons.Controls.Add(this.buttonExit);
             this.panelButtons.Controls.Add(this.buttonReset);
             this.panelButtons.Controls.Add(this.buttonSkip);
             this.panelButtons.Controls.Add(this.buttonPause);
@@ -379,9 +382,10 @@
             this.tsmiStart,
             this.tsmiPause,
             this.tsmiSkip,
-            this.tsmiReset});
+            this.tsmiReset,
+            this.tsmiExit});
             this.contextMenuStrip.Name = "contextMenuStrip1";
-            this.contextMenuStrip.Size = new System.Drawing.Size(140, 92);
+            this.contextMenuStrip.Size = new System.Drawing.Size(140, 114);
             this.contextMenuStrip.Text = "Pomodoro Timer";
             // 
             // tsmiStart
@@ -408,6 +412,26 @@
             this.tsmiReset.Size = new System.Drawing.Size(139, 22);
             this.tsmiReset.Text = "Сброс";
             // 
+            // buttonExit
+            // 
+            this.buttonExit.Dock = System.Windows.Forms.DockStyle.Top;
+            this.buttonExit.FlatAppearance.BorderSize = 0;
+            this.buttonExit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Fuchsia;
+            this.buttonExit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Cyan;
+            this.buttonExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonExit.Location = new System.Drawing.Point(0, 92);
+            this.buttonExit.Name = "buttonExit";
+            this.buttonExit.Size = new System.Drawing.Size(84, 23);
+            this.buttonExit.TabIndex = 4;
+            this.buttonExit.Text = "Выход";
+            this.buttonExit.UseVisualStyleBackColor = true;
+            // 
+            // tsmiExit
+            // 
+            this.tsmiExit.Name = "tsmiExit";
+            this.tsmiExit.Size = new System.Drawing.Size(139, 22);
+            this.tsmiExit.Text = "Выход";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -418,6 +442,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.Text = "PomodoroTimer";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.Resize += new System.EventHandler(this.MainForm_Resize);
             this.tabControl.ResumeLayout(false);
@@ -470,6 +495,8 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiPause;
         private System.Windows.Forms.ToolStripMenuItem tsmiSkip;
         private System.Windows.Forms.ToolStripMenuItem tsmiReset;
+        private System.Windows.Forms.Button buttonExit;
+        private System.Windows.Forms.ToolStripMenuItem tsmiExit;
     }
 }
 

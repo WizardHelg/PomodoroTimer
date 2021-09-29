@@ -32,7 +32,9 @@ namespace PomodoroTimer
                 .AddBinding(ControlBinder.Name.Skip, buttonSkip)
                 .AddBinding(ControlBinder.Name.Skip, tsmiSkip)
                 .AddBinding(ControlBinder.Name.Reset, buttonReset)
-                .AddBinding(ControlBinder.Name.Reset, tsmiReset);
+                .AddBinding(ControlBinder.Name.Reset, tsmiReset)
+                .AddBinding(ControlBinder.Name.Exit, buttonExit)
+                .AddBinding(ControlBinder.Name.Exit, tsmiExit);
 
             ViewBinder.Build(model)
                 .AddBinding(ViewBinder.Name.Timer, labelTimer)
@@ -44,6 +46,15 @@ namespace PomodoroTimer
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             JsonFileBroker.Save(provider.GetSetting(), SettingsFilePath);
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if(e.CloseReason == CloseReason.UserClosing)
+            {
+                WindowState = FormWindowState.Minimized;
+                e.Cancel = true;
+            }
         }
 
         private void NotifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)

@@ -10,7 +10,8 @@ namespace PomodoroTimer
             Start,
             Pause,
             Skip,
-            Reset
+            Reset,
+            Exit
         }
 
         private readonly Model.IModelController model;
@@ -27,6 +28,7 @@ namespace PomodoroTimer
                 Name.Pause => () => model.Pause(),
                 Name.Skip => () => model.Skip(),
                 Name.Reset => () => model.Reset(),
+                Name.Exit => () => model.Exit(),
                 _ => () => { }
             };
 
@@ -43,6 +45,7 @@ namespace PomodoroTimer
                 Name.Pause => () => model.Pause(),
                 Name.Skip => () => model.Skip(),
                 Name.Reset => () => model.Reset(),
+                Name.Exit => () => model.Exit(),
                 _ => () => { }
             };
 
