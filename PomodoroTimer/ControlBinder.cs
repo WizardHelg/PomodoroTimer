@@ -22,17 +22,20 @@ namespace PomodoroTimer
 
         public ControlBinder AddBinding(Name name, Control control)
         {
-            Action action = GetAction(name);
-            control.Click += (sender, e) => action();
-
+            control.Click += CreateHandler(name);
             return this;
         }
 
         public ControlBinder AddBinding(Name name, ToolStripMenuItem control)
         {
-            control.Click += (sender, e) => GetAction(name);
-
+            control.Click += CreateHandler(name);
             return this;
+        }
+
+        private EventHandler CreateHandler(Name name)
+        {
+            Action action = GetAction(name);
+            return (sender, e) => action();
         }
 
         private Action GetAction(Name name) => name switch
