@@ -47,7 +47,6 @@ namespace PomodoroTimer.Model
         {
             ChangeTime?.Invoke(currentStep);
             ChangePomodoroNumber?.Invoke(currentStep.Number);
-
         }
 
         private void Timer_Tick(object? sender, EventArgs e)
