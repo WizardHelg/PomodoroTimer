@@ -95,10 +95,14 @@ namespace PomodoroTimer.PTimer.Model
                 if (steps.Count == 0)
                     InitQueue();
 
-                currentStep = steps.Dequeue();
-                currentStepNumber++;
-                PomodoroComplited?.Invoke();
+                if(currentStep.Type == Step.StepType.Work)
+                {
+                    currentStepNumber++;
+                    PomodoroComplited?.Invoke();
+                }
 
+                currentStep = steps.Dequeue();
+                
                 if (startNext)
                 {
                     timer.Start();
