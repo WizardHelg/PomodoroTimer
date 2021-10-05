@@ -6,8 +6,6 @@ namespace PomodoroTimer
 {
     internal static class Program
     {
-        private static int c = 0;
-
         public static bool IsSingle()
         {
             Mutex _ = new(true, "PomodoroMutex", out bool result);

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
-namespace PomodoroTimer
+namespace PomodoroTimer.PSettings
 {
     /// <summary>
     /// Настройки
@@ -13,7 +13,8 @@ namespace PomodoroTimer
             WorkPeriod,
             SmallRelaxPeriod,
             BigRelaxPeriod,
-            PomodoroAmaunt
+            PomodoroAmaunt,
+            Cycles
         }
 
         private readonly Dictionary<Name, int> data = new()
@@ -21,7 +22,8 @@ namespace PomodoroTimer
             [Name.WorkPeriod] = 25,
             [Name.SmallRelaxPeriod] = 5,
             [Name.BigRelaxPeriod] = 15,
-            [Name.PomodoroAmaunt] = 4
+            [Name.PomodoroAmaunt] = 4,
+            [Name.Cycles] = 1
         };
 
         [JsonPropertyName("workPeriod")]
@@ -50,6 +52,13 @@ namespace PomodoroTimer
         {
             get => data[Name.PomodoroAmaunt];
             set => data[Name.PomodoroAmaunt] = value;
+        }
+
+        [JsonPropertyName("cycles")]
+        public int Cycles
+        {
+            get => data[Name.Cycles];
+            set => data[Name.Cycles] = value;
         }
 
         public int this[Name name]

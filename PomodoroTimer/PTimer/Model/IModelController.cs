@@ -1,4 +1,4 @@
-﻿namespace PomodoroTimer.Model
+﻿namespace PomodoroTimer.PTimer.Model
 {
     internal interface IModelController
     {

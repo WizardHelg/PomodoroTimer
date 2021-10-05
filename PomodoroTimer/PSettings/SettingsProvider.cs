@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace PomodoroTimer
+namespace PomodoroTimer.PSettings
 {
     /// <summary>
     /// Связь настроек и контролов настроек
@@ -10,6 +10,7 @@ namespace PomodoroTimer
     {
         private readonly Settings settings;
         private readonly Dictionary<Settings.Name, NumericUpDown> controls = new();
+        private IObserver? observer;
 
         public static SettingsProvider Build(Settings settings) => new(settings);
 
@@ -22,12 +23,16 @@ namespace PomodoroTimer
         /// <param name="control">Контрол настройки</param>
         public SettingsProvider AddControl(Settings.Name name, NumericUpDown control)
         {
-            if (controls.ContainsKey(name))
-                controls[name] = control;
-            else
-                controls.Add(name, control);
-
+            controls.Add(name, control);
+            control.ValueChanged += (sender, e) => observer?.Update(GetSetting());
             control.Value = settings[name];
+
+            return this;
+        }
+
+        public SettingsProvider AddObserver(IObserver observer)
+        {
+            this.observer = observer;
 
             return this;
         }
@@ -44,17 +49,6 @@ namespace PomodoroTimer
                 returnValue[item.Key] = (int)item.Value.Value;
 
             return returnValue;
-        }
-
-        public int this[Settings.Name name]
-        {
-            get
-            {
-                if (controls.ContainsKey(name))
-                    return (int)controls[name].Value;
-                else
-                    return settings[name];
-            }
         }
     }
 }

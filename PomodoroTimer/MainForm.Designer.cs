@@ -33,6 +33,7 @@
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPageTimer = new System.Windows.Forms.TabPage();
             this.panelButtons = new System.Windows.Forms.Panel();
+            this.buttonExit = new System.Windows.Forms.Button();
             this.buttonReset = new System.Windows.Forms.Button();
             this.buttonSkip = new System.Windows.Forms.Button();
             this.buttonPause = new System.Windows.Forms.Button();
@@ -40,6 +41,10 @@
             this.panelTimer = new System.Windows.Forms.Panel();
             this.labelTimer = new System.Windows.Forms.Label();
             this.tabPageSettings = new System.Windows.Forms.TabPage();
+            this.groupBoxPlaning = new System.Windows.Forms.GroupBox();
+            this.labelPlaning = new System.Windows.Forms.Label();
+            this.numericUpDownCycles = new System.Windows.Forms.NumericUpDown();
+            this.label5 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.numericUpDownAmount = new System.Windows.Forms.NumericUpDown();
             this.groupBoxIntervals = new System.Windows.Forms.GroupBox();
@@ -51,6 +56,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.numericUpDownWork = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
+            this.tabPageStatistic = new System.Windows.Forms.TabPage();
+            this.labelStatistic = new System.Windows.Forms.Label();
             this.labelPomodoroNumber = new System.Windows.Forms.Label();
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -58,13 +65,14 @@
             this.tsmiPause = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiSkip = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiReset = new System.Windows.Forms.ToolStripMenuItem();
-            this.buttonExit = new System.Windows.Forms.Button();
             this.tsmiExit = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl.SuspendLayout();
             this.tabPageTimer.SuspendLayout();
             this.panelButtons.SuspendLayout();
             this.panelTimer.SuspendLayout();
             this.tabPageSettings.SuspendLayout();
+            this.groupBoxPlaning.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCycles)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAmount)).BeginInit();
             this.groupBoxIntervals.SuspendLayout();
@@ -72,6 +80,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBigRelax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSmallRelax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWork)).BeginInit();
+            this.tabPageStatistic.SuspendLayout();
             this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -79,6 +88,7 @@
             // 
             this.tabControl.Controls.Add(this.tabPageTimer);
             this.tabControl.Controls.Add(this.tabPageSettings);
+            this.tabControl.Controls.Add(this.tabPageStatistic);
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl.Location = new System.Drawing.Point(0, 0);
             this.tabControl.Name = "tabControl";
@@ -110,6 +120,20 @@
             this.panelButtons.Name = "panelButtons";
             this.panelButtons.Size = new System.Drawing.Size(84, 416);
             this.panelButtons.TabIndex = 2;
+            // 
+            // buttonExit
+            // 
+            this.buttonExit.Dock = System.Windows.Forms.DockStyle.Top;
+            this.buttonExit.FlatAppearance.BorderSize = 0;
+            this.buttonExit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Fuchsia;
+            this.buttonExit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Cyan;
+            this.buttonExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonExit.Location = new System.Drawing.Point(0, 92);
+            this.buttonExit.Name = "buttonExit";
+            this.buttonExit.Size = new System.Drawing.Size(84, 23);
+            this.buttonExit.TabIndex = 4;
+            this.buttonExit.Text = "Выход";
+            this.buttonExit.UseVisualStyleBackColor = true;
             // 
             // buttonReset
             // 
@@ -192,6 +216,7 @@
             // 
             // tabPageSettings
             // 
+            this.tabPageSettings.Controls.Add(this.groupBoxPlaning);
             this.tabPageSettings.Controls.Add(this.groupBox1);
             this.tabPageSettings.Controls.Add(this.groupBoxIntervals);
             this.tabPageSettings.Location = new System.Drawing.Point(4, 24);
@@ -202,10 +227,63 @@
             this.tabPageSettings.Text = "Настройка";
             this.tabPageSettings.UseVisualStyleBackColor = true;
             // 
+            // groupBoxPlaning
+            // 
+            this.groupBoxPlaning.Controls.Add(this.labelPlaning);
+            this.groupBoxPlaning.Controls.Add(this.numericUpDownCycles);
+            this.groupBoxPlaning.Controls.Add(this.label5);
+            this.groupBoxPlaning.Location = new System.Drawing.Point(185, 6);
+            this.groupBoxPlaning.Name = "groupBoxPlaning";
+            this.groupBoxPlaning.Size = new System.Drawing.Size(184, 218);
+            this.groupBoxPlaning.TabIndex = 2;
+            this.groupBoxPlaning.TabStop = false;
+            this.groupBoxPlaning.Text = "Планирование";
+            // 
+            // labelPlaning
+            // 
+            this.labelPlaning.AutoSize = true;
+            this.labelPlaning.Location = new System.Drawing.Point(6, 50);
+            this.labelPlaning.Name = "labelPlaning";
+            this.labelPlaning.Size = new System.Drawing.Size(122, 60);
+            this.labelPlaning.TabIndex = 3;
+            this.labelPlaning.Text = "Всего помидорок: 10\r\nРабочее время: 2:56\r\nВремя отдыха: 0:25\r\nВсего времени: 5:45" +
+    "";
+            // 
+            // numericUpDownCycles
+            // 
+            this.numericUpDownCycles.Location = new System.Drawing.Point(130, 22);
+            this.numericUpDownCycles.Maximum = new decimal(new int[] {
+            59,
+            0,
+            0,
+            0});
+            this.numericUpDownCycles.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownCycles.Name = "numericUpDownCycles";
+            this.numericUpDownCycles.Size = new System.Drawing.Size(44, 23);
+            this.numericUpDownCycles.TabIndex = 2;
+            this.numericUpDownCycles.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 24);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(118, 15);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Количество циклов:";
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.numericUpDownAmount);
-            this.groupBox1.Location = new System.Drawing.Point(164, 6);
+            this.groupBox1.Location = new System.Drawing.Point(8, 168);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(171, 56);
             this.groupBox1.TabIndex = 1;
@@ -237,7 +315,7 @@
             this.groupBoxIntervals.Controls.Add(this.label1);
             this.groupBoxIntervals.Location = new System.Drawing.Point(8, 6);
             this.groupBoxIntervals.Name = "groupBoxIntervals";
-            this.groupBoxIntervals.Size = new System.Drawing.Size(150, 156);
+            this.groupBoxIntervals.Size = new System.Drawing.Size(171, 156);
             this.groupBoxIntervals.TabIndex = 0;
             this.groupBoxIntervals.TabStop = false;
             this.groupBoxIntervals.Text = "Интервалы, мин";
@@ -247,7 +325,7 @@
             this.label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label4.Location = new System.Drawing.Point(0, 50);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(150, 1);
+            this.label4.Size = new System.Drawing.Size(171, 1);
             this.label4.TabIndex = 3;
             // 
             // groupBoxRelax
@@ -258,16 +336,16 @@
             this.groupBoxRelax.Controls.Add(this.label2);
             this.groupBoxRelax.Location = new System.Drawing.Point(6, 60);
             this.groupBoxRelax.Name = "groupBoxRelax";
-            this.groupBoxRelax.Size = new System.Drawing.Size(137, 88);
+            this.groupBoxRelax.Size = new System.Drawing.Size(159, 88);
             this.groupBoxRelax.TabIndex = 2;
             this.groupBoxRelax.TabStop = false;
             this.groupBoxRelax.Text = "Перерыв";
             // 
             // numericUpDownBigRelax
             // 
-            this.numericUpDownBigRelax.Location = new System.Drawing.Point(75, 51);
+            this.numericUpDownBigRelax.Location = new System.Drawing.Point(109, 51);
             this.numericUpDownBigRelax.Maximum = new decimal(new int[] {
-            60,
+            59,
             0,
             0,
             0});
@@ -296,9 +374,9 @@
             // 
             // numericUpDownSmallRelax
             // 
-            this.numericUpDownSmallRelax.Location = new System.Drawing.Point(75, 22);
+            this.numericUpDownSmallRelax.Location = new System.Drawing.Point(109, 22);
             this.numericUpDownSmallRelax.Maximum = new decimal(new int[] {
-            60,
+            59,
             0,
             0,
             0});
@@ -327,9 +405,9 @@
             // 
             // numericUpDownWork
             // 
-            this.numericUpDownWork.Location = new System.Drawing.Point(81, 22);
+            this.numericUpDownWork.Location = new System.Drawing.Point(115, 22);
             this.numericUpDownWork.Maximum = new decimal(new int[] {
-            60,
+            59,
             0,
             0,
             0});
@@ -356,14 +434,34 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Работа";
             // 
+            // tabPageStatistic
+            // 
+            this.tabPageStatistic.Controls.Add(this.labelStatistic);
+            this.tabPageStatistic.Location = new System.Drawing.Point(4, 24);
+            this.tabPageStatistic.Name = "tabPageStatistic";
+            this.tabPageStatistic.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageStatistic.Size = new System.Drawing.Size(792, 422);
+            this.tabPageStatistic.TabIndex = 2;
+            this.tabPageStatistic.Text = "Статистика";
+            this.tabPageStatistic.UseVisualStyleBackColor = true;
+            // 
+            // labelStatistic
+            // 
+            this.labelStatistic.AutoSize = true;
+            this.labelStatistic.Location = new System.Drawing.Point(6, 14);
+            this.labelStatistic.Name = "labelStatistic";
+            this.labelStatistic.Size = new System.Drawing.Size(79, 15);
+            this.labelStatistic.TabIndex = 0;
+            this.labelStatistic.Text = "В разработке";
+            // 
             // labelPomodoroNumber
             // 
             this.labelPomodoroNumber.AutoSize = true;
-            this.labelPomodoroNumber.Location = new System.Drawing.Point(130, 5);
+            this.labelPomodoroNumber.Location = new System.Drawing.Point(210, 5);
             this.labelPomodoroNumber.Name = "labelPomodoroNumber";
-            this.labelPomodoroNumber.Size = new System.Drawing.Size(123, 15);
+            this.labelPomodoroNumber.Size = new System.Drawing.Size(153, 15);
             this.labelPomodoroNumber.TabIndex = 1;
-            this.labelPomodoroNumber.Text = "Номер помидорки: 1";
+            this.labelPomodoroNumber.Text = "Номер помидорки: 1 из 25";
             // 
             // notifyIcon
             // 
@@ -412,20 +510,6 @@
             this.tsmiReset.Size = new System.Drawing.Size(139, 22);
             this.tsmiReset.Text = "Сброс";
             // 
-            // buttonExit
-            // 
-            this.buttonExit.Dock = System.Windows.Forms.DockStyle.Top;
-            this.buttonExit.FlatAppearance.BorderSize = 0;
-            this.buttonExit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Fuchsia;
-            this.buttonExit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Cyan;
-            this.buttonExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonExit.Location = new System.Drawing.Point(0, 92);
-            this.buttonExit.Name = "buttonExit";
-            this.buttonExit.Size = new System.Drawing.Size(84, 23);
-            this.buttonExit.TabIndex = 4;
-            this.buttonExit.Text = "Выход";
-            this.buttonExit.UseVisualStyleBackColor = true;
-            // 
             // tsmiExit
             // 
             this.tsmiExit.Name = "tsmiExit";
@@ -450,6 +534,9 @@
             this.panelButtons.ResumeLayout(false);
             this.panelTimer.ResumeLayout(false);
             this.tabPageSettings.ResumeLayout(false);
+            this.groupBoxPlaning.ResumeLayout(false);
+            this.groupBoxPlaning.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCycles)).EndInit();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAmount)).EndInit();
             this.groupBoxIntervals.ResumeLayout(false);
@@ -459,6 +546,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBigRelax)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSmallRelax)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWork)).EndInit();
+            this.tabPageStatistic.ResumeLayout(false);
+            this.tabPageStatistic.PerformLayout();
             this.contextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -497,6 +586,12 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiReset;
         private System.Windows.Forms.Button buttonExit;
         private System.Windows.Forms.ToolStripMenuItem tsmiExit;
+        private System.Windows.Forms.GroupBox groupBoxPlaning;
+        private System.Windows.Forms.Label labelPlaning;
+        private System.Windows.Forms.NumericUpDown numericUpDownCycles;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TabPage tabPageStatistic;
+        private System.Windows.Forms.Label labelStatistic;
     }
 }
 

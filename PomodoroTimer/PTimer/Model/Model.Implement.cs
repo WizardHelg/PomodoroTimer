@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace PomodoroTimer.Model
+namespace PomodoroTimer.PTimer.Model
 {
     internal partial class Model
     {
         public event Action<TimeSpan>? ChangeTime;
-        public event Action<int>? ChangePomodoroNumber;
+        public event Action<int, int>? ChangePomodoroNumber;
 
         public void Start() => timer.Start();
 
@@ -24,9 +24,10 @@ namespace PomodoroTimer.Model
                 InitQueue();
             
             currentStep = steps.Dequeue();
+            currentStepNumber++;
 
             ChangeTime?.Invoke(currentStep);
-            ChangePomodoroNumber?.Invoke(currentStep.Number);
+            ChangePomodoroNumber?.Invoke(currentStepNumber, maxStepNumber);
         }
 
         public void Exit()

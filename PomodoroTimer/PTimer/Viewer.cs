@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace PomodoroTimer
+namespace PomodoroTimer.PTimer
 {
-    internal class ViewBinder
+    internal class Viewer
     {
         public enum Name
         {
@@ -14,18 +14,18 @@ namespace PomodoroTimer
 
         private readonly Dictionary<Name, Control> controls = new();
 
-        public static ViewBinder Build(Model.IModelView model) => new(model);
+        public static Viewer Build(Model.IModelView model) => new(model);
 
-        private ViewBinder(Model.IModelView model)
+        private Viewer(Model.IModelView model)
         {
             model.ChangeTime += Model_ChangeTime;
             model.ChangePomodoroNumber += Model_ChangePomodoroNumber;
         }
 
-        private void Model_ChangePomodoroNumber(int number)
+        private void Model_ChangePomodoroNumber(int number, int max)
         {
             if (controls.TryGetValue(Name.Number, out var control))
-                control.Text = $"Номер помидорки: {number}";
+                control.Text = $"Номер помидорки: {number} из {max}";
         }
 
         private void Model_ChangeTime(TimeSpan time)
@@ -34,7 +34,7 @@ namespace PomodoroTimer
                 control.Text = @$"{time:mm\:ss}";
         }
 
-        public ViewBinder AddBinding(Name name, Control control)
+        public Viewer AddBinding(Name name, Control control)
         {
             if(controls.ContainsKey(name))
                 controls[name] = control;

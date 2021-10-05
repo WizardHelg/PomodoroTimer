@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace PomodoroTimer
+namespace PomodoroTimer.PTimer
 {
-    internal class ControlBinder
+    internal class Controler
     {
         public enum Name
         {
@@ -16,17 +16,17 @@ namespace PomodoroTimer
 
         private readonly Model.IModelController model;
 
-        public static ControlBinder Build(Model.IModelController model) => new(model);
+        public static Controler Build(Model.IModelController model) => new(model);
 
-        private ControlBinder(Model.IModelController model) => this.model = model;
+        private Controler(Model.IModelController model) => this.model = model;
 
-        public ControlBinder AddBinding(Name name, Control control)
+        public Controler AddBinding(Name name, Control control)
         {
             control.Click += CreateHandler(name);
             return this;
         }
 
-        public ControlBinder AddBinding(Name name, ToolStripMenuItem control)
+        public Controler AddBinding(Name name, ToolStripMenuItem control)
         {
             control.Click += CreateHandler(name);
             return this;

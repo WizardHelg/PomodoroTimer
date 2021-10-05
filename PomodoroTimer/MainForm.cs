@@ -1,4 +1,8 @@
-﻿using System.Windows.Forms;
+﻿using PomodoroTimer.PPlaner;
+using PomodoroTimer.PSettings;
+using PomodoroTimer.PTimer;
+using PomodoroTimer.PTimer.Model;
+using System.Windows.Forms;
 
 namespace PomodoroTimer
 {
@@ -6,7 +10,7 @@ namespace PomodoroTimer
     {
         private const string SettingsFilePath = "appsetting.json";
         private readonly SettingsProvider provider;
-        private readonly Model.Model model;
+        private readonly Model model;
 
         private FormWindowState windowState = FormWindowState.Normal;
 
@@ -17,28 +21,30 @@ namespace PomodoroTimer
             Settings settings = JsonFileBroker.Load<Settings>(SettingsFilePath);
 
             provider = SettingsProvider.Build(settings)
+                           .AddObserver(new Planer(labelPlaning))
                            .AddControl(Settings.Name.WorkPeriod, numericUpDownWork)
                            .AddControl(Settings.Name.SmallRelaxPeriod, numericUpDownSmallRelax)
                            .AddControl(Settings.Name.BigRelaxPeriod, numericUpDownBigRelax)
-                           .AddControl(Settings.Name.PomodoroAmaunt, numericUpDownAmount);
+                           .AddControl(Settings.Name.PomodoroAmaunt, numericUpDownAmount)
+                           .AddControl(Settings.Name.Cycles, numericUpDownCycles);                          
 
-            model = new Model.Model(provider);
+            model = new Model(provider);
 
-            ControlBinder.Build(model)
-                .AddBinding(ControlBinder.Name.Start, buttonStart)
-                .AddBinding(ControlBinder.Name.Start, tsmiStart)
-                .AddBinding(ControlBinder.Name.Pause, buttonPause)
-                .AddBinding(ControlBinder.Name.Pause, tsmiPause)
-                .AddBinding(ControlBinder.Name.Skip, buttonSkip)
-                .AddBinding(ControlBinder.Name.Skip, tsmiSkip)
-                .AddBinding(ControlBinder.Name.Reset, buttonReset)
-                .AddBinding(ControlBinder.Name.Reset, tsmiReset)
-                .AddBinding(ControlBinder.Name.Exit, buttonExit)
-                .AddBinding(ControlBinder.Name.Exit, tsmiExit);
+            Controler.Build(model)
+                .AddBinding(Controler.Name.Start, buttonStart)
+                .AddBinding(Controler.Name.Start, tsmiStart)
+                .AddBinding(Controler.Name.Pause, buttonPause)
+                .AddBinding(Controler.Name.Pause, tsmiPause)
+                .AddBinding(Controler.Name.Skip, buttonSkip)
+                .AddBinding(Controler.Name.Skip, tsmiSkip)
+                .AddBinding(Controler.Name.Reset, buttonReset)
+                .AddBinding(Controler.Name.Reset, tsmiReset)
+                .AddBinding(Controler.Name.Exit, buttonExit)
+                .AddBinding(Controler.Name.Exit, tsmiExit);
 
-            ViewBinder.Build(model)
-                .AddBinding(ViewBinder.Name.Timer, labelTimer)
-                .AddBinding(ViewBinder.Name.Number, labelPomodoroNumber);
+            Viewer.Build(model)
+                .AddBinding(Viewer.Name.Timer, labelTimer)
+                .AddBinding(Viewer.Name.Number, labelPomodoroNumber);
 
             model.Run();
         }
