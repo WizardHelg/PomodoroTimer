@@ -1,5 +1,6 @@
 ﻿using PomodoroTimer.PPlaner;
 using PomodoroTimer.PSettings;
+using PomodoroTimer.PStatistic;
 using PomodoroTimer.PTimer;
 using PomodoroTimer.PTimer.Model;
 using System.Windows.Forms;
@@ -9,7 +10,9 @@ namespace PomodoroTimer
     public partial class MainForm : Form
     {
         private const string SettingsFilePath = "appsetting.json";
-        private readonly SettingsProvider provider;
+        private const string StatisticFilePath = "statistic.json";
+        private readonly SettingsProvider settingsProvider;
+        private readonly StatisticProvider statisticProvider;
         private readonly Model model;
 
         private FormWindowState windowState = FormWindowState.Normal;
@@ -22,7 +25,7 @@ namespace PomodoroTimer
 
             Settings settings = JsonFileBroker.Load<Settings>(SettingsFilePath);
 
-            provider = SettingsProvider.Build(settings)
+            settingsProvider = SettingsProvider.Build(settings)
                            .AddObserver(new Planer(labelPlaning))
                            .AddControl(Settings.Name.WorkPeriod, numericUpDownWork)
                            .AddControl(Settings.Name.SmallRelaxPeriod, numericUpDownSmallRelax)
@@ -30,7 +33,7 @@ namespace PomodoroTimer
                            .AddControl(Settings.Name.PomodoroAmaunt, numericUpDownAmount)
                            .AddControl(Settings.Name.Cycles, numericUpDownCycles);                          
 
-            model = new Model(provider);
+            model = new Model(settingsProvider);
 
             Controler.Build(model)
                 .AddBinding(Controler.Name.Start, buttonStart)
@@ -48,12 +51,18 @@ namespace PomodoroTimer
                 .AddBinding(Viewer.Name.Timer, labelTimer)
                 .AddBinding(Viewer.Name.Number, labelPomodoroNumber);
 
+            Statistic statistic = JsonFileBroker.Load<Statistic>(StatisticFilePath);
+
+            statisticProvider = StatisticProvider.Build(model, statistic)
+                                .AddView(labelStatistic);
+
             model.Run();
         }
 
         private void Application_ApplicationExit(object? sender, System.EventArgs e)
         {
-            JsonFileBroker.Save(provider.GetSetting(), SettingsFilePath);
+            JsonFileBroker.Save(settingsProvider.GetSetting(), SettingsFilePath);
+            JsonFileBroker.Save(statisticProvider.GetStatistic(), StatisticFilePath);
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)

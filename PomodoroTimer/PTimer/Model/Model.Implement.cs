@@ -7,6 +7,7 @@ namespace PomodoroTimer.PTimer.Model
     {
         public event Action<TimeSpan>? ChangeTime;
         public event Action<int, int>? ChangePomodoroNumber;
+        public event Action? PomodoroComplited;
 
         public void Start() => timer.Start();
 

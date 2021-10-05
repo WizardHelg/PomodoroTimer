@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace PomodoroTimer.PTimer.Model
 {
-    internal partial class Model : IModelController, IModelView
+    internal partial class Model : IModelController, IModelView, IStatisticModel
     {
         class Step
         {
@@ -97,6 +97,7 @@ namespace PomodoroTimer.PTimer.Model
 
                 currentStep = steps.Dequeue();
                 currentStepNumber++;
+                PomodoroComplited?.Invoke();
 
                 if (startNext)
                 {
