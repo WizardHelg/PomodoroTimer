@@ -18,6 +18,8 @@ namespace PomodoroTimer
         {
             InitializeComponent();
 
+            Application.ApplicationExit += Application_ApplicationExit;
+
             Settings settings = JsonFileBroker.Load<Settings>(SettingsFilePath);
 
             provider = SettingsProvider.Build(settings)
@@ -49,7 +51,7 @@ namespace PomodoroTimer
             model.Run();
         }
 
-        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        private void Application_ApplicationExit(object? sender, System.EventArgs e)
         {
             JsonFileBroker.Save(provider.GetSetting(), SettingsFilePath);
         }
