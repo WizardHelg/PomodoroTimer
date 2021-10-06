@@ -25,7 +25,9 @@ namespace PomodoroTimer.PTimer.Model
                 InitQueue();
             
             currentStep = steps.Dequeue();
-            currentStepNumber++;
+
+            if (currentStep.Type == Step.StepType.Work)
+                currentStepNumber++;
 
             ChangeTime?.Invoke(currentStep);
             ChangePomodoroNumber?.Invoke(currentStepNumber, maxStepNumber);

@@ -119,29 +119,32 @@ namespace PomodoroTimer.PTimer.Model
 
 
             Settings settings = settingsProvider.GetSetting();
-            int amaunt = settings.PomodoroAmaunt * 2;
+            int cycles = settings.Cycles;
+            int pomodorAmaunt = settings.PomodoroAmaunt;
+            int amaunt = pomodorAmaunt * 2;
             int work = settings.WorkPeriod * 60;
             int smallRelax = settings.SmallRelaxPeriod * 60;
             int bigRelax = settings.BigRelaxPeriod * 60;
 
-            maxStepNumber = settings.PomodoroAmaunt * settings.Cycles;
+            maxStepNumber = pomodorAmaunt * cycles;
             currentStepNumber = 0;
 
             steps.Clear();
 
-            for (int i = 0; i < amaunt; i++)
-            {
-                bool isBigRelax = i == amaunt - 1;
-
-                steps.Enqueue(new Step()
+            for(int c = 0; c < cycles; c++)
+                for (int i = 0; i < amaunt; i++)
                 {
-                    Type = isWork ? Step.StepType.Work : Step.StepType.Relax,
-                    Seconds = isWork ? work
-                                     : isBigRelax ? bigRelax : smallRelax
-                });
+                    bool isBigRelax = i == amaunt - 1;
 
-                isWork = !isWork;
-            }       
+                    steps.Enqueue(new Step()
+                    {
+                        Type = isWork ? Step.StepType.Work : Step.StepType.Relax,
+                        Seconds = isWork ? work
+                                         : isBigRelax ? bigRelax : smallRelax
+                    });
+
+                    isWork = !isWork;
+                }       
         }
     }
 }
