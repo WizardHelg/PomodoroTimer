@@ -10,10 +10,22 @@ namespace PomodoroTimer.PStatistic
         DateTime currentDate;
         int today, yesterday, currentWeek, previousWeek;
         Label? label;
+        Timer timer;
 
         public StatisticProvider(IStatisticModel statisticModel, Statistic statistic)
         {
             statisticModel.PomodoroComplited += StatisticModel_PomodoroComplited;
+
+            timer = new Timer()
+            {
+                Interval = 600_000
+            };
+
+            timer.Tick += (sender, e) =>
+            {
+                if (UpdateDate())
+                    ShiftStatistic();
+            };
             
             (currentDate, today, yesterday, currentWeek, previousWeek) = statistic;
 
