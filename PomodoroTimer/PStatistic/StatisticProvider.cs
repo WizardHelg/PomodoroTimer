@@ -5,12 +5,12 @@ using System.Windows.Forms;
 
 namespace PomodoroTimer.PStatistic
 {
-    internal class StatisticProvider
+    internal class StatisticProvider : IDisposable
     {
-        DateTime currentDate;
-        int today, yesterday, currentWeek, previousWeek;
-        Label? label;
-        Timer timer;
+        private DateTime currentDate;
+        private int today, yesterday, currentWeek, previousWeek;
+        private Label? label;
+        private readonly Timer timer;
 
         public StatisticProvider(IStatisticModel statisticModel, Statistic statistic)
         {
@@ -30,6 +30,8 @@ namespace PomodoroTimer.PStatistic
             (currentDate, today, yesterday, currentWeek, previousWeek) = statistic;
 
             Update(withAdd: false);
+
+            timer.Start();
         }
 
         public static StatisticProvider Build(IStatisticModel statisticModel, Statistic statistic) => 
@@ -51,6 +53,8 @@ namespace PomodoroTimer.PStatistic
 
             return this;
         }
+
+        public void Dispose() => timer?.Dispose();
 
         private void StatisticModel_PomodoroComplited() => Update(withAdd: true);
 

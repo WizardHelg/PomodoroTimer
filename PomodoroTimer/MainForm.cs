@@ -63,6 +63,7 @@ namespace PomodoroTimer
         {
             JsonFileBroker.Save(settingsProvider.GetSetting(), SettingsFilePath);
             JsonFileBroker.Save(statisticProvider.GetStatistic(), StatisticFilePath);
+            statisticProvider.Dispose();
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
